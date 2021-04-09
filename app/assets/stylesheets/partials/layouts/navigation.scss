@@ -11,12 +11,13 @@ nav {
       opacity: 0.8;
     }
   }
-}
-.navbar-default, .navbar-toggle:focus, .collapsed, button.navbar-toggle {
-  background: $navbarColor !important;
-  border: none;
-  a {
-    color: white !important;
+  
+  .navbar-default, .navbar-toggle:focus, .collapsed, button.navbar-toggle {
+    background: $navbarColor !important;
+    border: none;
+    a {
+      color: white !important;
+    }
   }
 }
 
