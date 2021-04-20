@@ -10,3 +10,5 @@
 
 // Partials - main css files
 @import "partials/layout/*";
+
+@import 'babel-polyfill';
