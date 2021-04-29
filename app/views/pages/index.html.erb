@@ -1,10 +1,27 @@
 <h1>Home Page</h1>
 
 <%= render 'posts/modal' %>
-
 <div class="container">
   <div class="row">
     <%= render 'pages/index/side_menu' %>
     <%= render 'pages/index/main_content' %>
+  </div><!-- row -->
+</div><!-- container -->
+
+<div class="container">
+  <div class="row">
+<<<<<<< HEAD
+    <%= render 'pages/index/side_menu' %>
+    <%= render 'pages/index/main_content' %>
+=======
+    <div id="side-menu"  class="col-sm-3">
+      <%= render @posts %>
+    </div><!-- side-menu -->
+
+    <div id="main-content" class="col-sm-9">
+      <%= render @posts %>
+    </div><!-- main-content -->
+
+>>>>>>> specific_branches
   </div><!-- row -->
 </div><!-- container -->
