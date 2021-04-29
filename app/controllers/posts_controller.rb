@@ -53,4 +53,12 @@ def get_posts
   end
 end
 
+def get_posts
+  PostsForBranchService.new({
+    search: params[:search],
+    category: params[:category],
+    branch: params[:action]
+  }).call
+end
+
 end
