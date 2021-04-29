@@ -20,6 +20,10 @@ class PostsController < ApplicationController
     posts_for_branch(params[:action])
   end
 
+  respond_to do |format|
+    format.html
+    format.js { render partial: 'posts/posts_pagination_page' }
+  end
 
 private
 
