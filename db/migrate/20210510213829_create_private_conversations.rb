@@ -1,7 +1,6 @@
-class CreatePrivateConversations < ActiveRecord::Migration[5.1]
+class CreatePrivateConversations < ActiveRecord::Migration[6.0]
   def change
     create_table :private_conversations do |t|
-      create_table :private_conversations do |t|
       t.integer :recipient_id
       t.integer :sender_id
 
@@ -10,6 +9,5 @@ class CreatePrivateConversations < ActiveRecord::Migration[5.1]
     add_index :private_conversations, :recipient_id
     add_index :private_conversations, :sender_id
     add_index :private_conversations, [:recipient_id, :sender_id], unique: true
-
   end
 end
