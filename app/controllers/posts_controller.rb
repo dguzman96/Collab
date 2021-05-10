@@ -7,6 +7,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
+    if user_signed_in?
+      @message_has_been_sent = conversation_exist?
+    end
   end
 
   def hobby
@@ -66,22 +70,23 @@ class PostsController < ApplicationController
     end
   end
 
+  private
 
+  def posts_for_branch(branch)
+    @categories = Category.where(branch: branch)
+    @posts = get_posts.paginate(page: params[:page])
+  end
 
-private
+  def get_posts
+    Post.limit(30)
+  end
 
-def posts_for_branch(branch)
-  @categories = Category.where(branch: branch)
-  @posts = get_posts.paginate(page: params[:page])
-end
+  def post_params
+    params.require(:post).permit(:content, :title, :category_id)
+    .merge(user_id: current_user.id)
+  end
 
-def get_posts
-  Post.limit(30)
-end
-
-def post_params
-  params.require(:post).permit(:content, :title, :category_id)
-                       .merge(user_id: current_user.id)
-end
-
+  def conversation_exist?
+    Private::Conversation.between_users(current_user.id, @post.user.id).present?
+  end
 end
