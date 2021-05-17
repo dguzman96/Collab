@@ -1,6 +1,10 @@
 class Private::Conversation < ApplicationRecord
     self.table_name = 'private_conversations'
 
+    scope :all_by_user, -> (user_id) do
+      where(recipient_id: user_id).or(where(sender_id: user_id))
+    end
+
     has_many :messages,
          class_name: "Private::Message",
          foreign_key: :conversation_id
