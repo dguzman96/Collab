@@ -43,6 +43,18 @@
   background-color: white;
 }
 
+.page-name {
+  margin: 15px 0px 15px 0px;
+  text-align: center;
+  background-color: white !important;
+  font-weight: bold;
+  a {
+    color: black;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
 
 #main-content {
   background: white;
@@ -80,15 +92,3 @@
     }
   }
 }
-
-.page-name {
-  margin: 15px 0px 15px 0px;
-  text-align: center;
-  background-color: white !important;
-  font-weight: bold;
-  a {
-    color: black;
-  }
-  a:hover {
-    text-decoration: underline;
-  }

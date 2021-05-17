@@ -16,7 +16,7 @@ module PostsHelper
  end
 
  def no_posts_partial_path
-   @posts.empty? ? 'posts/branch/no_posts' : 'shared/empty_partial'
+   @posts.empty? ? 'posts/branch/no_posts' : 'posts/shared/empty_partial'
  end
 
  def post_format_partial_path
@@ -27,7 +27,7 @@ module PostsHelper
    if params[:category].present?
      'posts/branch/search_form/category_field'
    else
-     'shared/empty_partial'
+     'posts/shared/empty_partial'
    end
  end
 
@@ -40,12 +40,12 @@ module PostsHelper
  end
 
  def no_posts_partial_path(posts)
-   posts.empty? ? 'posts/shared/no_posts' : 'shared/empty_partial'
+   posts.empty? ? 'posts/shared/no_posts' : 'posts/shared/empty_partial'
  end
 
  def contact_user_partial_path
    if user_signed_in?
-     @post.user.id != current_user.id ? 'posts/show/contact_user' : 'shared/empty_partial'
+     @post.user.id != current_user.id ? 'posts/show/contact_user' : 'posts/shared/empty_partial'
    else
      'posts/show/login_required'
    end
