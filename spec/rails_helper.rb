@@ -8,6 +8,8 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
 
+Capybara.default_max_wait_time = 5
+
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
@@ -43,7 +45,7 @@ RSpec.configure do |config|
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include FactoryGirl::Syntax::Methods
   Capybara.javascript_driver = :poltergeist
-  Capybara.server = :puma 
+  Capybara.server = :puma
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
