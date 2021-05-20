@@ -1,3 +1,5 @@
+<% @contact = get_contact_record(@recipient) %>
+<%= render 'private/conversations/conversation/request_status' %>
 <% @recipient = private_conv_recipient(conversation) %>
 <% @is_messenger = false %>
 <li class="conversation-window"

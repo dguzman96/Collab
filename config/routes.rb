@@ -26,5 +26,5 @@ Rails.application.routes.draw do
   end
 
   resources :contacts, only: [:create, :update, :destroy]
-  
+
 end
