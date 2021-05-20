@@ -47,3 +47,21 @@ $('#conversations-menu').on('click', 'li', function(e) {
         conversation_window.find('form textarea').click().focus();
     }
 });
+
+// if window is collapsed, hide conversation menu options
+if ( panel_body.css('display') == 'none' ) {
+    panel.find('.add-people-to-chat,\
+                .add-user-to-contacts,\
+                .contact-request-sent').hide();
+    conversation_heading = panel.find('.conversation-heading');
+    conversation_heading.css('width', '360px');
+
+} else { // show conversation menu options
+    conversation_heading = panel.find('.conversation-heading');
+    conversation_heading.css('width', '320px');
+    panel.find('.add-people-to-chat,\
+                .add-user-to-contacts,\
+                .contact-request-sent').show();
+    // focus textarea
+    $('form textarea', this).focus();
+}
