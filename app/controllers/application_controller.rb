@@ -40,5 +40,6 @@ class ApplicationController < ActionController::Base
     else
       @private_conversations_windows = []
       @group_conversations_windows = []
+    end
   end
 end
