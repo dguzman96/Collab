@@ -34,4 +34,18 @@ module Group::MessagesHelper
   def seen_by_user?
     @seen_by_user ? '' : 'unseen'
   end
+
+  def message_content_partial_path(user, message, previous_message)
+    # if previous message exists
+    if defined?(previous_message) && previous_message.present?
+      # if new message is created by the same user as previous'
+      if previous_message.user_id == user.id
+        'group/messages/message/same_user_content'
+      else
+        'group/messages/message/different_user_content'
+      end
+    else
+      'group/messages/message/different_user_content'
+    end
+  end
 end

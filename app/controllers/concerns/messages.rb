@@ -21,5 +21,4 @@ module Messages
       @messages_to_display_offset = 0
     end
   end
-
 end

@@ -1,5 +1,4 @@
 module Private::MessagesHelper
-
   require 'shared/messages_helper'
   include Shared::MessagesHelper
 
@@ -10,10 +9,10 @@ module Private::MessagesHelper
         @message = message
         'private/messages/message/new_date'
       else
-        'posts/shared/empty_partial'
+        'shared/empty_partial'
       end
     else
-      'posts/shared/empty_partial'
+      'shared/empty_partial'
     end
   end
 

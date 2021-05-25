@@ -1,13 +1,11 @@
 class Group::ConversationChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
     if belongs_to_conversation(params[:id])
       stream_from "group_conversation_#{params[:id]}"
     end
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
     stop_all_streams
   end
 
@@ -32,7 +30,7 @@ class Group::ConversationChannel < ApplicationCable::Channel
 
   private
 
-  # checks if a user belongs to a conversati
+  # checks if a user belongs to a conversation
   def belongs_to_conversation(id)
     conversations = current_user.group_conversations.ids
     conversations.include?(id)

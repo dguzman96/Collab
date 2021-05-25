@@ -1,24 +1,25 @@
 module Private::ConversationsHelper
-  require Shared::ConversationsHelper
+  include Shared::ConversationsHelper
+  #require Shared::ConversationsHelper
 
   # get the opposite user of the conversation
   def private_conv_recipient(conversation)
     conversation.opposed_user(current_user)
   end
 
-  # if the conversation has unshown messages, show a button to get them
+  # if the conversation has unshown messages, create a link to get them
   def load_private_messages(conversation)
     if conversation.messages.count > 0
       'private/conversations/conversation/messages_list/link_to_previous_messages'
     else
-      'posts/shared/empty_partial'
+      'shared/empty_partial'
     end
   end
 
   # decide to show an option or not
   def add_to_contacts_partial_path(contact)
     if recipient_is_contact?
-      'posts/shared/empty_partial'
+      'shared/empty_partial'
     else
       non_contact(contact)
     end
@@ -32,12 +33,12 @@ module Private::ConversationsHelper
   def unaccepted_contact_request_partial_path(contact)
     if unaccepted_contact_exists(contact)
       if request_sent_by_user(contact)
-        'private/conversations/conversation/request_status/sent_by_current_user'
+        "private/conversations/conversation/request_status/sent_by_current_user"
       else
-        'private/conversations/conversation/request_status/sent_by_recipient'
+        "private/conversations/conversation/request_status/sent_by_recipient"
       end
     else
-      'posts/shared/empty_partial'
+      'shared/empty_partial'
     end
   end
 
@@ -45,9 +46,9 @@ module Private::ConversationsHelper
   # if an opposite user is not in contacts and no requests exist
   def not_contact_no_request_partial_path(contact)
     if recipient_is_contact? == false && unaccepted_contact_exists(contact) == false
-      'private/conversations/conversation/request_status/send_request'
+      "private/conversations/conversation/request_status/send_request"
     else
-      'posts/shared/empty_partial'
+      'shared/empty_partial'
     end
   end
 
@@ -55,12 +56,12 @@ module Private::ConversationsHelper
   def conv_heading_class(contact)
     # show a conversation heading without or with options
     if unaccepted_contact_exists(contact)
-      'conversation-heading-full'
+     'conversation-heading-full'
     else
-      'conversation-heading'
+     'conversation-heading'
     end
   end
-  
+
   def create_group_conv_partial_path(contact)
     if recipient_is_contact?
       'private/conversations/conversation/heading/create_group_conversation'
@@ -86,7 +87,7 @@ module Private::ConversationsHelper
   def non_contact(contact)
     # if the contact request was sent by the user or recipient
     if unaccepted_contact_exists(contact)
-      'posts/shared/empty_partial'
+      'shared/empty_partial'
     else
       # contact requests wasn't sent by any users
       'private/conversations/conversation/heading/add_user_to_contacts'
@@ -108,4 +109,6 @@ module Private::ConversationsHelper
     # false if it was sent by a recipient
     contact['user_id'] == current_user.id
   end
+
+
 end

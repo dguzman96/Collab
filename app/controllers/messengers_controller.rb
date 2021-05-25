@@ -6,9 +6,9 @@ class MessengersController < ApplicationController
   end
 
   def get_private_conversation
-  	conversation = Private::Conversation.between_users(current_user.id, params[:id])
-  	@conversation = conversation[0]
-  	respond_to do |format|
+    conversation = Private::Conversation.between_users(current_user.id, params[:id])
+    @conversation = conversation[0]
+    respond_to do |format|
       format.js { render 'get_private_conversation'}
     end
   end

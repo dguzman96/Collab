@@ -1,11 +1,8 @@
 module PagesHelper
-  def contacts_list_partial_path
-    user_signed_in? ? 'pages/index/contacts' : 'pages/index/login_required'
-  end
 
-  def contacts_list_partial_path
-    user_signed_in? ? 'pages/index/contacts' : 'pages/index/login_required'
-  end
+	def contacts_list_partial_path
+		user_signed_in? ? 'pages/index/contacts' : 'pages/index/login_required'
+	end
 
   def login_required_links_partial_path
     if user_signed_in?
