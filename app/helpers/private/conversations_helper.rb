@@ -1,5 +1,5 @@
 module Private::ConversationsHelper
-require Shared::ConversationsHelper
+  require Shared::ConversationsHelper
 
   # get the opposite user of the conversation
   def private_conv_recipient(conversation)
@@ -24,16 +24,6 @@ require Shared::ConversationsHelper
     end
   end
 
-  # decide which conversation heading style to show
-  def conv_heading_class(contact)
-    # show a conversation heading without or with options
-    if unaccepted_contact_exists(contact)
-      'conversation-heading-full'
-    else
-      'conversation-heading'
-    end
-  end
-
   def get_contact_record(recipient)
     contact = Contact.find_by_users(current_user.id, recipient.id)
   end
@@ -50,6 +40,7 @@ require Shared::ConversationsHelper
       'posts/shared/empty_partial'
     end
   end
+
   # show a link to send a contact request
   # if an opposite user is not in contacts and no requests exist
   def not_contact_no_request_partial_path(contact)
@@ -60,6 +51,29 @@ require Shared::ConversationsHelper
     end
   end
 
+  # decide which conversation heading style to show
+  def conv_heading_class(contact)
+    # show a conversation heading without or with options
+    if unaccepted_contact_exists(contact)
+      'conversation-heading-full'
+    else
+      'conversation-heading'
+    end
+  end
+  
+  def create_group_conv_partial_path(contact)
+    if recipient_is_contact?
+      'private/conversations/conversation/heading/create_group_conversation'
+    else
+      'shared/empty_partial'
+    end
+  end
+
+  def contacts_except_recipient(recipient)
+    contacts = current_user.all_active_contacts
+    # return all contacts, except the opposite user of the chat
+    contacts.delete_if {|contact| contact.id == recipient.id }
+  end
 
   private
 
