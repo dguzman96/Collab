@@ -2,7 +2,7 @@
   z-index: 2;
   padding: 0;
   background-color: white;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 50px) !important;
   .conversation-details {
     z-index: 3;
     background-color: white;
