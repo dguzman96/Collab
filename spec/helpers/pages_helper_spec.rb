@@ -4,7 +4,7 @@ RSpec.describe PagesHelper, :type => :helper do
   context '#contacts_list_partial_path' do
     it "returns contacts partial path" do
       view.stub("user_signed_in?").and_return(true)
-      expect(helper.contacts_list_partial_path).to eq 'pages/index/contacts'
+      expect(helper.contacts_list_partial_path).to eq 'pages/index/contacts' 
     end
 
     it "returns login_required partial path" do
@@ -31,7 +31,7 @@ RSpec.describe PagesHelper, :type => :helper do
     it 'returns no_contacts partial path' do
       assign(:contacts, [])
       expect(helper.no_contacts_partial_path).to eq(
-        'pages/index/contacts/no_contacts'
+        'pages/index/contacts/no_contacts' 
       )
     end
 

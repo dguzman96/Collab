@@ -9,7 +9,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |private_conversation, evaluator|
-        create_list(:private_message, evaluator.messages_count,
+        create_list(:private_message, evaluator.messages_count, 
                      conversation: private_conversation)
       end
     end

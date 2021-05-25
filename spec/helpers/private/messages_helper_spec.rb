@@ -13,14 +13,14 @@ RSpec.describe Private::MessagesHelper, :type => :helper do
 
     it "returns an empty partial's path" do
       expect(helper.private_message_date_check(message, previous_message)).to(
-        eq 'posts/shared/empty_partial'
+        eq 'shared/empty_partial'
       )
     end
 
     it "returns an empty partial's path" do
       previous_message = nil
       expect(helper.private_message_date_check(message, previous_message)).to(
-        eq 'posts/shared/empty_partial'
+        eq 'shared/empty_partial'
       )
     end
   end
@@ -50,4 +50,5 @@ RSpec.describe Private::MessagesHelper, :type => :helper do
       expect(helper.seen_or_unseen(message)).to eq ''
     end
   end
+  
 end

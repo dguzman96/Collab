@@ -11,7 +11,7 @@ RSpec.feature "Create a new post", :type => :feature do
       find('.new-post-button').click
       fill_in 'post[title]', with: 'a' * 20
       fill_in 'post[content]', with: 'a' * 20
-      select 'category', from: 'post[category_id]'
+      select 'category', from: 'post[category_id]' 
       click_on 'Create a post'
       expect(page).to have_selector('h3', text: 'a' * 20)
     end

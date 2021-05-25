@@ -4,7 +4,7 @@ RSpec.describe Private::ConversationsHelper, type: :helper do
   let(:current_user) { create(:user) }
   let(:recipient) { create(:user) }
 
-
+  
   context '#load_private_messages' do
     let(:conversation) { create(:private_conversation) }
 
@@ -36,7 +36,7 @@ RSpec.describe Private::ConversationsHelper, type: :helper do
       helper.stub(:recipient_is_contact?).and_return(false)
       helper.stub(:unaccepted_contact_exists).and_return(false)
       expect(helper.add_to_contacts_partial_path(contact)).to eq(
-        'private/conversations/conversation/heading/add_user_to_contacts'
+        'private/conversations/conversation/heading/add_user_to_contacts' 
       )
     end
   end
@@ -56,7 +56,7 @@ RSpec.describe Private::ConversationsHelper, type: :helper do
       helper.stub(:unaccepted_contact_exists).and_return(true)
       helper.stub(:request_sent_by_user).and_return(true)
       expect(helper.unaccepted_contact_request_partial_path(contact)).to eq(
-        'private/conversations/conversation/request_status/sent_by_current_user'
+        'private/conversations/conversation/request_status/sent_by_current_user' 
       )
     end
 
@@ -120,13 +120,13 @@ RSpec.describe Private::ConversationsHelper, type: :helper do
 
   context '#contacts_except_recipient' do
     it 'return all contacts, except the opposite user of the chat' do
-      contacts = create_list(:contact,
-                              5,
-                              user_id: current_user.id,
+      contacts = create_list(:contact, 
+                              5, 
+                              user_id: current_user.id, 
                               accepted: true)
-
-      contacts << create(:contact,
-                          user_id: current_user.id,
+      
+      contacts << create(:contact, 
+                          user_id: current_user.id, 
                           contact_id: recipient.id,
                           accepted: true)
       helper.stub(:current_user).and_return(current_user)
@@ -137,14 +137,14 @@ RSpec.describe Private::ConversationsHelper, type: :helper do
   context '#create_group_conv_partial_path' do
     let(:contact) { create(:contact) }
 
-    it "returns a create_group_conversation partial's path" do
+    it "returns a create_group_conversation partial's path" do 
       helper.stub(:recipient_is_contact?).and_return(true)
       expect(helper.create_group_conv_partial_path(contact)).to(
         eq 'private/conversations/conversation/heading/create_group_conversation'
       )
     end
 
-    it "returns an empty partial's path" do
+    it "returns an empty partial's path" do 
       helper.stub(:recipient_is_contact?).and_return(false)
       expect(helper.create_group_conv_partial_path(contact)).to(
         eq 'shared/empty_partial'
@@ -188,9 +188,9 @@ RSpec.describe Private::ConversationsHelper, type: :helper do
         helper.stub(:current_user).and_return(current_user)
         assign(:recipient, recipient)
         create_list(:contact, 2, user_id: current_user.id, accepted: true)
-        create(:contact,
-                user_id: current_user.id,
-                contact_id: recipient.id,
+        create(:contact, 
+                user_id: current_user.id, 
+                contact_id: recipient.id, 
                 accepted: true)
         expect(helper.instance_eval { recipient_is_contact? }).to eq true
       end
@@ -210,4 +210,5 @@ RSpec.describe Private::ConversationsHelper, type: :helper do
       end
     end
   end
+  
 end

@@ -34,6 +34,16 @@ App.notification = App.cable.subscriptions.create("NotificationChannel", {
       calculateContactRequests();
     }
 
+    // if a user was added to a new group conversation
+    if (data['notification'] == 'added-to-group-conversation') {
+      subToGroupConversationChannel(data['conversation_id']);
+      $('#conversations-menu ul').prepend(data['link_to_conversation']);
+      calculateUnseenConversations();
+      if (gon.user_id == data['message_author']) {
+        $('#conversations-menu ul li a')[0].click();
+      }
+    }
+
   },
   contact_request_response: function(sender_user_name, receiver_user_name, notification) {
     return this.perform('contact_request_response', {

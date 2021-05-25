@@ -27,16 +27,16 @@ RSpec.describe Group::MessagesHelper, type: :helper do
 
     it "returns same_user_content partial's path" do
       previous_message.update(user_id: user.id)
-      expect(helper.message_content_partial_path(user,
-                                                 message,
+      expect(helper.message_content_partial_path(user, 
+                                                 message, 
                                                  previous_message)).to eq(
         'group/messages/message/same_user_content'
       )
     end
 
     it "returns different_user_content partial's path" do
-      expect(helper.message_content_partial_path(user,
-                                                 message,
+      expect(helper.message_content_partial_path(user, 
+                                                 message, 
                                                  previous_message)).to eq(
         'group/messages/message/different_user_content'
       )
@@ -44,8 +44,8 @@ RSpec.describe Group::MessagesHelper, type: :helper do
 
     it "returns different_user_content partial's path" do
       previous_message = nil
-      expect(helper.message_content_partial_path(user,
-                                                 message,
+      expect(helper.message_content_partial_path(user, 
+                                                 message, 
                                                  previous_message)).to eq(
         'group/messages/message/different_user_content'
       )
@@ -58,14 +58,14 @@ RSpec.describe Group::MessagesHelper, type: :helper do
 
     it "returns a new_date partial's path" do
       new_message.update(created_at: 2.days.ago)
-      expect(helper.group_message_date_check_partial_path(new_message,
+      expect(helper.group_message_date_check_partial_path(new_message, 
                                                           previous_message)).to eq(
         'group/messages/message/new_date'
       )
     end
 
     it "returns an empty partial's path" do
-      expect(helper.group_message_date_check_partial_path(new_message,
+      expect(helper.group_message_date_check_partial_path(new_message, 
                                                           previous_message)).to eq(
         'shared/empty_partial'
       )
@@ -73,10 +73,11 @@ RSpec.describe Group::MessagesHelper, type: :helper do
 
     it "returns an empty partial's path" do
       previous_message = nil
-      expect(helper.group_message_date_check_partial_path(new_message,
+      expect(helper.group_message_date_check_partial_path(new_message, 
                                                           previous_message)).to eq(
         'shared/empty_partial'
       )
     end
   end
+
 end

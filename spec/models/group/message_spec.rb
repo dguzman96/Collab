@@ -14,19 +14,19 @@ RSpec.describe Group::Message, type: :model do
   end
 
   context 'Validations' do
-    it "is not valid without a content" do
+    it "is not valid without a content" do 
       message.content = nil
-      expect(message).not_to be_valid
+      expect(message).not_to be_valid 
     end
 
-    it "is not valid without a conversation_id" do
+    it "is not valid without a conversation_id" do 
       message.conversation_id = nil
-      expect(message).not_to be_valid
+      expect(message).not_to be_valid 
     end
 
-    it "is not valid without a user_id" do
+    it "is not valid without a user_id" do 
       message.user_id = nil
-      expect(message).not_to be_valid
+      expect(message).not_to be_valid 
     end
   end
 
@@ -38,4 +38,5 @@ RSpec.describe Group::Message, type: :model do
       expect(message2.previous_message).to eq message1
     end
   end
+ 
 end

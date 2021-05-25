@@ -8,24 +8,24 @@ RSpec.feature "window", :type => :feature do
     visit root_path
     find('#conversations-menu .dropdown-toggle').trigger('click')
     find('#conversations-menu li a').click
-    expect(page).to have_selector('.conversation-window')
   end
-  before(:each) do
+  before(:each) do 
     conversation
     create(:private_message, conversation_id: conversation.id, user_id: user.id)
   end
 
   scenario 'user opens a conversation', js: true do
     open_window
+    expect(page).to have_selector('.conversation-window')
   end
 
-  scenario 'user closes a conversation', js: true do
+  scenario 'user closes a conversation', js: true do 
     open_window
-    find('.conversation-window .close-conversation').click
-    expect(page).not_to have_selector('.conversation-window')
+    find('.conversation-window .close-conversation').trigger('click')
+    expect(page.has_no_selector?('.conversation-window')).to eq true
   end
 
-  scenario 'user sends a message', js: true do
+  scenario 'user sends a message', js: true do 
     open_window
     expect(page).to have_selector('.conversation-window .messages-list li', count: 1)
     find('.conversation-window').fill_in 'body', with: 'hey, mate'
@@ -38,4 +38,5 @@ RSpec.feature "window", :type => :feature do
     find('.conversation-window .conversation-heading').click
     expect(page).not_to have_selector('.conversation-window .messages-list')
   end
+  
 end

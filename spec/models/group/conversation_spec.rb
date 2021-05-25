@@ -18,4 +18,5 @@ RSpec.describe Group::Conversation, type: :model do
       expect(association.options[:dependent]).to eq :destroy
     end
   end
+
 end
