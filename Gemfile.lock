@@ -137,8 +137,10 @@ GEM
     minitest (5.14.4)
     msgpack (1.4.2)
     multi_json (1.15.0)
-    nio4r (2.5.7)
+    nio4r (2.5.8)
     nokogiri (1.11.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.11.2-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     phantomjs (2.1.1.0)
@@ -147,7 +149,7 @@ GEM
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
     public_suffix (4.0.6)
-    puma (4.3.7)
+    puma (4.3.12)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -276,6 +278,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-18
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
@@ -294,7 +297,7 @@ DEPENDENCIES
   listen (~> 3.2)
   phantomjs
   poltergeist
-  puma (~> 4.1)
+  puma (~> 4.3)
   rails (~> 6.0.3, >= 6.0.3.6)
   rails-controller-testing
   rspec-rails (~> 3.6)
